@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mimic Studio Support</title>
+  <meta name="description" content="Mimic Studio Support for Mimic Studio by Caivra Tech LLC.">
+  <style>
+:root {
+  --bg-0: #070812;
+  --bg-1: #11132a;
+  --panel: rgba(255, 255, 255, 0.075);
+  --panel-strong: rgba(255, 255, 255, 0.115);
+  --line: rgba(255, 255, 255, 0.16);
+  --text: #f7f7ff;
+  --muted: #c7c8df;
+  --soft: #9297bd;
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --accent-3: #f472b6;
+  --good: #8ef7d0;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(139, 92, 246, 0.34), transparent 32rem),
+    radial-gradient(circle at 88% 10%, rgba(34, 211, 238, 0.24), transparent 28rem),
+    radial-gradient(circle at 52% 92%, rgba(244, 114, 182, 0.14), transparent 34rem),
+    linear-gradient(145deg, var(--bg-0), var(--bg-1) 56%, #090a16);
+  line-height: 1.65;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+}
+a { color: #89f3ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap {
+  width: min(1120px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 34px 0 56px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(18px);
+  border-radius: 999px;
+  box-shadow: 0 16px 44px rgba(0,0,0,.24);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(139,92,246,.95), rgba(34,211,238,.88)),
+    linear-gradient(#111, #111);
+  box-shadow: 0 12px 34px rgba(34,211,238,.24), inset 0 0 22px rgba(255,255,255,.18);
+  font-weight: 900;
+  letter-spacing: -.05em;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.brand-text strong { font-size: 15px; letter-spacing: .01em; }
+.brand-text span { font-size: 12px; color: var(--muted); }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,.18);
+  color: var(--text);
+  background: rgba(255,255,255,.07);
+  border-radius: 999px;
+  padding: 9px 13px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+  gap: 28px;
+  align-items: stretch;
+  margin: 38px 0 28px;
+}
+.hero-card, .content-card, .mini-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.055));
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+.hero-card {
+  padding: clamp(28px, 5vw, 56px);
+  overflow: hidden;
+  position: relative;
+}
+.hero-card::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -140px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(34,211,238,.22), transparent 70%);
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d8d7ff;
+  background: rgba(139,92,246,.16);
+  border: 1px solid rgba(139,92,246,.34);
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 18px 0 14px;
+  font-size: clamp(38px, 7vw, 76px);
+  line-height: .94;
+  letter-spacing: -.07em;
+}
+h2 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.1;
+  letter-spacing: -.035em;
+}
+h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  letter-spacing: -.02em;
+}
+p { margin: 0 0 14px; color: var(--muted); }
+.lede {
+  max-width: 760px;
+  font-size: clamp(17px, 2vw, 20px);
+  color: #e2e3f8;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  border: 1px solid rgba(255,255,255,.2);
+  background: linear-gradient(135deg, rgba(139,92,246,.98), rgba(34,211,238,.78));
+  box-shadow: 0 16px 34px rgba(34,211,238,.16);
+}
+.button.secondary {
+  background: rgba(255,255,255,.08);
+  box-shadow: none;
+}
+.visual {
+  padding: 24px;
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.visual::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.11);
+  background:
+    linear-gradient(180deg, rgba(10,12,30,.76), rgba(10,12,30,.42)),
+    radial-gradient(circle at 50% 20%, rgba(139,92,246,.26), transparent 20rem);
+}
+.device {
+  position: relative;
+  width: min(310px, 100%);
+  border-radius: 34px;
+  padding: 18px;
+  background: rgba(6,8,20,.78);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 30px 90px rgba(0,0,0,.46), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.device-top {
+  display: flex;
+  justify-content: space-between;
+  color: var(--soft);
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+.wave {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 7px;
+  height: 128px;
+  padding: 18px 10px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
+  border: 1px solid rgba(255,255,255,.12);
+}
+.bar {
+  width: 10px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent), var(--accent-3));
+  box-shadow: 0 0 22px rgba(34,211,238,.2);
+}
+.track-list { margin-top: 14px; display: grid; gap: 10px; }
+.track {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: center;
+  border-radius: 18px;
+  padding: 10px;
+  background: rgba(255,255,255,.065);
+  border: 1px solid rgba(255,255,255,.095);
+}
+.dot {
+  width: 34px; height: 34px; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(139,92,246,.9), rgba(34,211,238,.72));
+}
+.line { height: 8px; border-radius: 99px; background: rgba(255,255,255,.14); margin: 5px 0; }
+.line.short { width: 64%; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 18px 0;
+}
+.mini-card {
+  padding: 20px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.24);
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  background: rgba(34,211,238,.11);
+  border: 1px solid rgba(34,211,238,.22);
+}
+.content-card {
+  padding: clamp(22px, 4vw, 36px);
+  margin: 18px 0;
+}
+.section {
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,.11);
+}
+.section:first-child { border-top: 0; padding-top: 0; }
+ul, ol { color: var(--muted); padding-left: 22px; margin: 10px 0 0; }
+li { margin: 7px 0; }
+.notice {
+  border: 1px solid rgba(142,247,208,.32);
+  background: rgba(142,247,208,.075);
+  color: #dffdf2;
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  margin: 16px 0 0;
+}
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 0 0;
+  color: var(--soft);
+  font-size: 13px;
+}
+.kicker {
+  color: var(--soft);
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+  margin-top: 14px;
+}
+.data-table th,
+.data-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  color: var(--muted);
+}
+.data-table th {
+  color: var(--text);
+  background: rgba(255,255,255,.07);
+  font-size: 13px;
+}
+.data-table tr:last-child td { border-bottom: 0; }
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+  .nav { align-items: flex-start; border-radius: 24px; }
+  .pill { display: none; }
+}
+@media print {
+  body { background: #ffffff; color: #111827; }
+  body::before, .visual { display: none; }
+  .hero { display: block; }
+  .hero-card, .content-card, .mini-card, .nav {
+    background: #ffffff;
+    box-shadow: none;
+    border-color: #d1d5db;
+  }
+  p, li, td { color: #374151; }
+  a { color: #111827; }
+}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <nav class="nav" aria-label="Page header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">M</div>
+        <div class="brand-text">
+          <strong>Mimic Studio</strong>
+          <span>Support</span>
+        </div>
+      </div>
+      <span class="pill">iPhone & iPad</span>
+    </nav>
+    <section class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">Support Center</span>
+        <h1>Need help with Mimic Studio?</h1>
+        <p class="lede">Troubleshooting, recording guidance, export help, and contact information for the iPhone and iPad version of Mimic Studio.</p>
+        <div class="hero-actions">
+          <a class="button" href="mailto:cserrano85@gmail.com?subject=Mimic%20Studio%20Support">Email Support</a>
+          <a class="button secondary" href="#help">View Help Topics</a>
+        </div>
+      </div>
+      <aside class="hero-card visual" aria-label="Mimic Studio visual motif">
+        <div class="device">
+          <div class="device-top"><span>Mimic</span><span>Studio</span></div>
+          <div class="wave" aria-hidden="true">
+            <span class="bar" style="height:38px"></span>
+<span class="bar" style="height:72px"></span>
+<span class="bar" style="height:46px"></span>
+<span class="bar" style="height:108px"></span>
+<span class="bar" style="height:84px"></span>
+<span class="bar" style="height:122px"></span>
+<span class="bar" style="height:58px"></span>
+<span class="bar" style="height:92px"></span>
+<span class="bar" style="height:64px"></span>
+<span class="bar" style="height:112px"></span>
+<span class="bar" style="height:50px"></span>
+<span class="bar" style="height:78px"></span>
+          </div>
+          <div class="track-list" aria-hidden="true">
+            <div class="track"><span class="dot"></span><span><span class="line"></span><span class="line short"></span></span></div>
+            <div class="track"><span class="dot"></span><span><span class="line"></span><span class="line short"></span></span></div>
+            <div class="track"><span class="dot"></span><span><span class="line"></span><span class="line short"></span></span></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid" id="help">
+      <article class="mini-card">
+        <div class="icon" aria-hidden="true">🎙️</div>
+        <h3>Recording</h3>
+        <p>Use microphone permission to capture humming, vocals, and audio ideas directly in the app.</p>
+      </article>
+      <article class="mini-card">
+        <div class="icon" aria-hidden="true">🎛️</div>
+        <h3>Creation</h3>
+        <p>Build sketches, adjust project settings, preview sounds, and shape musical ideas without complex studio setup.</p>
+      </article>
+      <article class="mini-card">
+        <div class="icon" aria-hidden="true">📤</div>
+        <h3>Export</h3>
+        <p>Export your work when available and save or share it using the options presented by your device.</p>
+      </article>
+    </section>
+
+    <section class="content-card">
+      <div class="section">
+        <h2>Quick Start</h2>
+        <ol>
+          <li>Open Mimic Studio and start a new idea or project.</li>
+          <li>Allow microphone access when you want to record audio.</li>
+          <li>Record a short vocal, humming, rhythm, or sound idea.</li>
+          <li>Preview your audio, refine your session, and export when ready.</li>
+        </ol>
+      </div>
+
+      <div class="section">
+        <h2>Microphone Permission</h2>
+        <p>If recording does not start, confirm that microphone access is enabled in your device settings. Mimic Studio uses the microphone to record humming, vocals, and audio ideas.</p>
+      </div>
+
+      <div class="section">
+        <h2>Audio Not Playing</h2>
+        <ul>
+          <li>Raise your device volume and check silent mode or connected headphones.</li>
+          <li>Close and reopen the app if audio playback appears stuck.</li>
+          <li>Try recording a short new sample to confirm the audio session is working.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Export or Sharing Issues</h2>
+        <ul>
+          <li>Make sure the project has audio content before exporting.</li>
+          <li>Confirm there is enough available device storage.</li>
+          <li>Retry export after closing other heavy apps if your device is low on memory.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Report a Problem</h2>
+        <p>Email <a href="mailto:cserrano85@gmail.com?subject=Mimic%20Studio%20Support">cserrano85@gmail.com</a> with a short description of the issue, your device model, app version, and the steps that caused the problem.</p>
+        <div class="notice">For the fastest help, include what you were trying to do: record, import, preview, transform, save, or export.</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 Caivra Tech LLC. All rights reserved.</span>
+      <span>Mimic Studio Support</span>
+    </footer>
+
+  </main>
+</body>
+</html>
